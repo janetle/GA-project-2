@@ -1,0 +1,24 @@
+
+.welcome{
+font-family
+}
+#footer{
+	align-items: center;
+	
+	background-color:#e3f2fd;
+}
+#header {
+	background-color:#e3f2fd;
+}
+#center {
+	padding-top: 15px;
+}
+#quote {
+font-family: 'Courgette', cursive;
+
+margin: 30px;
+border: 5px solid red;
+}
+#heading{
+	margin-top: 1rem;
+}
