@@ -86,42 +86,41 @@ app.get('/', (req, res)=>{
 	console.log('hey,  that')
 	let data = {
 		announcements: [],
-		quotes: [],
+		
 		science: [],
 		art: [],
 		humanities: []
 	};
 
 	let query = 'SELECT anouncement FROM anouncement ORDER BY id DESC LIMIT 2'; 
-
+	console.log(query);
 	pool.query(query, (err, result)=> {
 		if(err){
 			console.log('Error searching for anouncement');
 		} else {
 			data.announcements = result.rows;
-			console.log(data.anouncement);
+			console.log(data.announcements);
 			let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 1 OR project_id = 2`;
 			pool.query(query, (err, result)=> {
 				if(err){
-					console.log('Error searching for quotes');
+					console.log('Error searching for science');
 				} else {
 					data.science =result.rows;
 
 					let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 3 OR project_id = 6`;
 					pool.query(query, (err, result)=> {
 						if(err){
-							console.log('Error searching for quotes');
+							console.log('Error searching for art');
 						} else {
 							data.art =result.rows;
 
 							let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 3 OR project_id = 6`;
 							pool.query(query, (err, result)=> {
 								if(err){
-									console.log('Error searching for quotes');
 								} else {
 									data.humanities =result.rows;
 									res.render('home', data);
-									console.log(data);
+									// console.log(data);
 								}
 							});
 						}

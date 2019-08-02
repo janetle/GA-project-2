@@ -1,20 +1,24 @@
 var React = require("react");
-class Anouncement extends React.Component {
+class Announcement extends React.Component {
   
     render() {
+    
         return (
-          <li>{this.props.anouncements}</li>
+          <li>{this.props.item.anouncement}</li>
                       
         );
     };
-
+};
 
 
 class Science extends React.Component {
   
     render() {
+      // console.log('hello')
+      // console.log( this.props.item);
         return (
-          <li>{this.props.science.name}</li>
+
+          <li>{this.props.item.name}</li>
                       
         );
     };
@@ -24,7 +28,7 @@ class Art extends React.Component {
   
     render() {
         return (
-          <li>{this.props.art.name}</li>
+          <li>{this.props.item.name}</li>
                       
         );
     };
@@ -34,7 +38,7 @@ class Humanities extends React.Component {
   
     render() {
         return (
-          <li>{this.props.humanities.name}</li>
+          <li>{this.props.item.name}</li>
                       
         );
     };
@@ -44,19 +48,23 @@ class Humanities extends React.Component {
 
 class HOME extends React.Component {
   render() {
-    console.log('trying to find the truth')
+    // console.log('trying to find the truth');
     
-    let anouncementElements = this.props.anouncements.map( (item, index) => {
-    return <ListItem item={item}></ListItem>;
+    let announcementElements = this.props.announcements.map( (item, index) => {
+     
+    return <Announcement item={item}></Announcement>;
+  });
 
-    let scienceElements = this.props.anouncements.map( (item, index) => {
-    return <ListItem item={item}></ListItem>;
+    let scienceElements = this.props.science.map( (item, index) => {
+    return <Science item={item}></Science>;
+  });
 
-    let artElements = this.props.anouncements.map( (item, index) => {
-    return <ListItem item={item}></ListItem>;
+    let artElements = this.props.art.map( (item, index) => {
+    return <Art item={item}></Art>;
+  });
 
-    let humanitiesElements = this.props.anouncements.map( (item, index) => {
-    return <ListItem item={item}></ListItem>;
+    let humanitiesElements = this.props.humanities.map( (item, index) => {
+    return <Humanities item={item}></Humanities>;
   });
 
     return (
@@ -112,8 +120,8 @@ class HOME extends React.Component {
           <div class = "col-md -8">
             <div class ="row">
               <div class="jumbotron ">
-                <h4 class="display-7">Anouncement</h4>
-                  <div id ="anouncement">`${this.props.anouncements}`</div>
+                <h4 class="display-7">Announcement</h4>
+                  <div id ="announcement">{announcementElements}</div>
               </div>
             </div>
 
@@ -127,18 +135,18 @@ class HOME extends React.Component {
               <h5> Science</h5>
               <p> Teacher in charge</p>
               <p> Name</p>
-              <ul id ="science">`${this.props.science.name}`</ul>
+              <ol id ="science">{scienceElements}</ol>
               </div>
               <div class = "col-md -2">
               <h5> Art</h5>
               <p> Teacher in charge: name</p>
-              <ul id ="art">{this.props.art.name}</ul>
+              <ol id ="art">{artElements}</ol>
               </div>
               <div class = "col-md -2">
               <h5> Humanities</h5>
               <p> Teacher in charge</p>
               <p> Name</p>
-              <ul id ="humanities">`${this.props.humanities.name}`</ul>
+              <ol id ="humanities">{humanitiesElements }</ol>
               </div>
 
             </div>

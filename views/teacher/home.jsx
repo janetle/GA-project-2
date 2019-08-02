@@ -30,7 +30,7 @@ class HOME extends React.Component {
               <input type={'text'} placeholder={'title'} name={'title'} /><br />
               <button type={'submit'}>Submit</button>
             </form>
-            <p> Make anouncement</p>
+            <p> Make announcement</p>
             <form method={'POST'} action={'/login/anouncement'}>
               <input type={'text'} placeholder={'anouncement'} name={'anouncement'} /><br />
               <button type={'submit'}>Submit</button>
