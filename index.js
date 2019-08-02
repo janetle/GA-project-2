@@ -93,12 +93,13 @@ app.get('/', (req, res)=>{
 	};
 
 	let query = 'SELECT anouncement FROM anouncement ORDER BY id DESC LIMIT 2'; 
-	console.log(query);
+
 	pool.query(query, (err, result)=> {
 		if(err){
 			console.log('Error searching for anouncement');
 		} else {
 			data.announcements = result.rows;
+
 			console.log(data.announcements);
 			let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 1 OR project_id = 2`;
 			pool.query(query, (err, result)=> {
@@ -226,17 +227,25 @@ app.get('/register', (req, res)=>{
 })
 
 app.post ('/register',(req,res)=>{
-	
-	const queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
-	value = [ req.body.id,req.body.projectId]
-	pool.query(queryString,value,(err)=>{
+	let query = `SELECT name from students JOIN WHERE id = req.body.id `;
+	pool.query(query, (err)=> {
 		if(err){
-			console.log("err",err)
+			console.log('You are not allowed to sign up.')
+			res.redirect('/');
 		} else {
-			console.log('done');
-			res.render('confirmation')
+
+			let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
+			value = [ req.body.id,req.body.projectId]
+			pool.query(queryString,value,(err)=>{
+				if(err){
+					console.log("err",err)
+				} else {
+					console.log('done');
+					res.render('confirmation')
+				}
+			});
 		}
-	});
+	});	
 });
 
 app.get('/login', (req, res)=>{
@@ -282,10 +291,6 @@ app.post('/login/anouncement',(req, res)=>{
 		}
 	});
 });
-
-// app.get('/confimation',(req, res)=>{
-// 	res.render('confirmation')
-// });
 
 
 

@@ -133,8 +133,8 @@ class HOME extends React.Component {
             <div class = "row" >  
               <div class = "col-md -2">
               <h5> Science</h5>
-              <p> Teacher in charge</p>
-              <p> Name</p>
+              <p> Teacher in charge: name</p>
+             
               <ol id ="science">{scienceElements}</ol>
               </div>
               <div class = "col-md -2">
@@ -144,8 +144,8 @@ class HOME extends React.Component {
               </div>
               <div class = "col-md -2">
               <h5> Humanities</h5>
-              <p> Teacher in charge</p>
-              <p> Name</p>
+              <p> Teacher in charge: name</p>
+             
               <ol id ="humanities">{humanitiesElements }</ol>
               </div>
 
