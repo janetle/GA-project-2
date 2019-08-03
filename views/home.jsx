@@ -1,48 +1,35 @@
 var React = require("react");
 class Announcement extends React.Component {
-  
     render() {
-    
         return (
-          <li>{this.props.item.anouncement}</li>
-                      
+          <li >{this.props.item.anouncement}</li>
         );
     };
 };
 
 
 class Science extends React.Component {
-  
     render() {
-      // console.log('hello')
-      // console.log( this.props.item);
         return (
-
           <li>{this.props.item.name}</li>
-                      
         );
     };
-
 };
+
 class Art extends React.Component {
-  
     render() {
         return (
           <li>{this.props.item.name}</li>
-                      
         );
     };
-
 };
+
 class Humanities extends React.Component {
-  
     render() {
         return (
           <li>{this.props.item.name}</li>
-                      
         );
     };
-
 };
 
 
@@ -75,14 +62,15 @@ class HOME extends React.Component {
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
           <link rel="stylesheet" href="style.css"/>
-          <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap|Open+Sans|Roboto+Condensed:300&display=swap" rel="stylesheet" />
 
         </head>
         <body>
-          <header>
+
+          <div class = "main">
             
-            <nav class="navbar navbar-expand-sm navbar-light " id = "header">
-              <a class="nav-link" href="/">Hackberry<span class="sr-only">(current)</span></a>
+            <nav class="navbar navbar-expand-sm navbar-light" id ="header">
+              <a class="logo" href="/"> <div id = "logopic">Home</div></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -94,69 +82,86 @@ class HOME extends React.Component {
 
               </div>
             </nav>
-            
+            <div class = "main-info">
+              <div class = "row">
+                <div class ="col-sm-12 col-md-3 sidebar">
+                  <div class="jumbotron weatherbar">
+                    
+                    <h3 id = "heading"> What inspires you today, Hackberry?</h3>
+                    <form class="form-inline my-2 my-sm-0" method='POST' action='/quotes'>
+                      <input name = "quote" class="form-control mb-2 mr-sm-2" type="text" placeholder="Your quote" aria-label="quote"/>
+                      <button class="btn btn-primar btn-sm mt-20 btn-warning" type="submit">Submit</button>
+                      <h5 class="display-5" id = "quotes"></h5>
+                    </form>
+                    <div > </div>
+                    <hr class="my-4" />
+                    <h4 class="display-7">Weather forecast</h4>
+                    <div id ="ty"></div>
+                    
+                    <a class="btn btn-primary btn-sm mt-10 btn-warning" href="#" role="button">Find out more</a>
+                  </div>
+                </div>
 
-            
-          </header>
-          <div class = "row">
-            <div class ="col-md-4">
-              <div class="jumbotron ">
-                
-                <h3 id ="heading"> What inspires you today, Hackberry?</h3>
-                <form class="form-inline my-2 my-md-0" method='POST' action='/quotes'>
-                  <input name = "quote" class="form-control mr-sm-2" type="text" placeholder="Your quote" aria-label="quote"/>
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
-                  <h5 class="display-5" id = "quotes"></h5>
-                </form>
-                <div > </div>
-                <hr class="my-4" />
-                <h4 class="display-7">Weather forecast</h4>
-                <div id ="ty"></div>
-                
-                <a class="btn btn-primary btn-sm mt-10" href="#" role="button">Find out more</a>
+                <div class = "col-md-9">
+                  <div class ="row">
+                    <div class="announcement mb-4">
+                      <h4 class="display-7">Announcement</h4>
+                        <div id ="announcement">{announcementElements}</div>
+                    </div>
+                  </div>
+
+                  <div class = "row categ" >  
+                    <h4> SIA Categories</h4>
+
+                  </div>
+
+                  <div class = "row namelist" >  
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Science</h5>
+                            <h6 class= "card-text"> Teacher in charge: name</h6>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="science">{scienceElements}</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Art</h5>
+                            <p class= "card-text"> <strong>Teacher in charge: name</strong></p>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="art">{artElements}</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Humanities</h5>
+                            <p class= "card-text"> <strong>Teacher in charge: name</strong></p>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="humanities">{humanitiesElements }</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-          <div class = "col-md -8">
-            <div class ="row">
-              <div class="jumbotron ">
-                <h4 class="display-7">Announcement</h4>
-                  <div id ="announcement">{announcementElements}</div>
-              </div>
-            </div>
-
-            <div class = "row" >  
-              <h4> SIA Categories</h4>
-
-            </div>
-
-            <div class = "row" >  
-              <div class = "col-md -2">
-              <h5> Science</h5>
-              <p> Teacher in charge: name</p>
-             
-              <ol id ="science">{scienceElements}</ol>
-              </div>
-              <div class = "col-md -2">
-              <h5> Art</h5>
-              <p> Teacher in charge: name</p>
-              <ol id ="art">{artElements}</ol>
-              </div>
-              <div class = "col-md -2">
-              <h5> Humanities</h5>
-              <p> Teacher in charge: name</p>
-             
-              <ol id ="humanities">{humanitiesElements }</ol>
-              </div>
-
-            </div>
+            <nav class="navbar navbar-light show justify-content-center " id ="footer">
+              <p id = "center"> © Strictly for Hackberry students and teachers only </p>
+            </nav>
           </div>
-        </div>
 
-          <nav class="navbar navbar-light show justify-content-center " id ="footer">
-            <p id = "center"> © Strictly for Hackberry students and teachers only </p>
-          </nav>
           <script src='script1.js'></script>
+          
         </body>
         </html>
     );

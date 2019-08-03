@@ -1,15 +1,47 @@
 
-.welcome{
-font-family
-}
-#footer{
-	align-items: center;
-	
-	background-color:#e3f2fd;
+.main {
+	margin-left: 40px;
+	margin-right: : 40px;
 }
 #header {
-	background-color:#e3f2fd;
+	padding-left: 40px;
+	padding-right: 30px;
 }
+
+a.logo{
+	padding:3px 16px;
+	color: white;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 30px;
+}
+a.nav-link{
+	font-family: 'Open Sans', sans-serif;
+	color:white;
+}
+.navbar-light{
+	background-color:#23629F;
+	padding:0;
+}
+.card{
+	height:400px;
+	background-color: #e9ecef;
+	overflow: scroll;
+
+}
+ol {
+	padding-left: 15px;
+
+}
+ol li{
+	padding-left: 10px;
+	font-family: 'Roboto Condensed', sans-serif;
+
+}
+.card-title{
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*
 #center {
 	padding-top: 15px;
 }
@@ -21,4 +53,37 @@ border: 5px solid red;
 }
 #heading{
 	margin-top: 1rem;
+}*/
+/*.categ {
+	background-color: #e9ecef;
+	margin-top: 0;
+	margin-bottom: 20px;
 }
+*/
+/*.announcement{
+	box-sizing: border-box;
+	width: 100%;
+	
+	margin-right:18px;
+}*/
+
+./*jumbotron.weatherbar{
+	padding: 20px;
+}
+
+.namelist .card{
+	height: 350px;
+	overflow: scroll;
+}*/
+
+
+/*@media (min-width: 576px){
+	.jumbotron {
+		background: RED;
+   		padding: 0;
+	}
+}
+*/
+
+
+

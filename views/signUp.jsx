@@ -1,6 +1,6 @@
 var React = require("react");
 
-class HOME extends React.Component {
+class Signup extends React.Component {
   render() {
     return (
       <html lang="en">
@@ -14,19 +14,25 @@ class HOME extends React.Component {
               <a href="/projects">Projects</a>
             </nav>
           </header>
-          
-          <div >
-              <form method='POST' action='/register'>
-                Name:
-                <input type="text" name ='name' autocomplete="off" autofocus />
-                Student Id:
-                <input type="text" name ='id' autocomplete="off" autofocus />
-                Project Id:
-                <input type="text" name ='projectId' autocomplete="off" autofocus />
-                <input type="submit" />
-              </form>
-          </div>
-            
+    
+              <div class="form-popup" id="myForm">
+               <form method='POST' action='/register'>
+                    <h1> Sign up </h1>
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="your name" name="name" autocomplete="off" autofocus />
+
+                  <label for="id"><b>Student Id</b></label>
+                  <input type="text" name="id" placeholder="your id" required />
+
+                  <label for="projectId"><b>Project Id</b></label>
+                  <input type="text" name="projectId" required />
+
+                  <button type="submit" class="btn">Sign up</button>
+                  <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+
+
           <footer>
             <p>Strictly for Hackberry students only</p>
             <a href="/login">Admin</a>
@@ -38,5 +44,5 @@ class HOME extends React.Component {
   }
 }
 
-module.exports = HOME;
+module.exports = Signup;
 

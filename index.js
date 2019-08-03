@@ -115,7 +115,7 @@ app.get('/', (req, res)=>{
 						} else {
 							data.art =result.rows;
 
-							let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 3 OR project_id = 6`;
+							let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 4 OR project_id = 5`;
 							pool.query(query, (err, result)=> {
 								if(err){
 								} else {
@@ -222,17 +222,20 @@ app.post('/quotes', (req,res)=> {
 	});
 });
 
-app.get('/register', (req, res)=>{
-	res.render('signUp');
-})
+// app.get('/register', (req, res)=>{
+// 	res.render('signUp');
+// })
 
-app.post ('/register',(req,res)=>{
-	let query = `SELECT name from students JOIN WHERE id = req.body.id `;
-	pool.query(query, (err)=> {
-		if(err){
+app.post ('/projects',(req,res)=>{
+	let num = (req.body.id);
+	let query = `SELECT name from students WHERE id = ${num} `;
+	pool.query(query, (err,result)=> {
+		if(err | req.body.name != result.rows[0].name){
+			console.log("error", err);
+			console.log(result.rows[0].name);
 			console.log('You are not allowed to sign up.')
 			res.redirect('/');
-		} else {
+		} else  {
 
 			let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
 			value = [ req.body.id,req.body.projectId]
@@ -241,10 +244,10 @@ app.post ('/register',(req,res)=>{
 					console.log("err",err)
 				} else {
 					console.log('done');
-					res.render('confirmation')
+					res.render('confirmation');
 				}
 			});
-		}
+		} 
 	});	
 });
 
@@ -254,7 +257,9 @@ app.get('/login', (req, res)=>{
 
 app.post('/login',(req, res)=>{
 	if( req.body.username === "George" & sha256(req.body.password + SALT) === sha256("banana" + SALT)){
-		res.render('teacher/home')
+		let hasshedUsername = sha256('GEORGE' + SALT);
+		res.cookie("loggedin", hasshedUsername);
+		res.render('teacher/home');
 	} else {
 		res. send ('You are not authorised to perform this action.')
 	}
