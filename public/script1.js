@@ -1,5 +1,6 @@
-var getQuotes = function() {
+var newQuotes = function() {
 	var quoteResponseHandler = function() {
+		console.log(this.responseText)
 		let data = JSON.parse(this.responseText);
 		console.log('Hi there')
 		console.log(data.quote);
@@ -76,7 +77,7 @@ var getWeatherForecast = function () {
 };
 
 window.onload = function () {
-	getQuotes();
+	newQuotes();
 	getWeatherForecast();
 	// makeAnouncement();
 };

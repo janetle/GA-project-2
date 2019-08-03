@@ -18,7 +18,7 @@ pool.on('error', function (err) {
   console.log('idle client error', err.message, err.stack);
 });
 
-SALT='AwholeNewWorld';
+
 
 /**
  * ===================================
@@ -53,114 +53,27 @@ app.engine('jsx', reactEngine);
  * ===================================
  */
 
+ // db contains *ALL* of our models
+const allModels = require('./db');
 
+// get the thing that contains all the routes
+const setRoutesFunction = require('./routes');
 
-
-/*
- * ===================================
- * ===================================
- *                DB
- * ===================================
- * ===================================
- */
-
-// db contains *ALL* of our models
-// const allModels = require('./db');
+// call it and pass in the "app" so that we can set routes on it (also models)
+setRoutesFunction(app, allModels);
 
 /**
  * ===================================
- * ===================================
- * Routes
- * ===================================
+ * Listen to requests on port 3000
  * ===================================
  */
 
-// get the thing that contains all the routes
-// const setRoutesFunction = require('./routes');
-
-// call it and pass in the "app" so that we can set routes on it (also models)
-// setRoutesFunction(app, allModels);
 
 
-app.get('/', (req, res)=>{
-	console.log('hey,  that')
-	let data = {
-		announcements: [],
-		
-		science: [],
-		art: [],
-		humanities: []
-	};
-
-	let query = 'SELECT anouncement FROM anouncement ORDER BY id DESC LIMIT 2'; 
-
-	pool.query(query, (err, result)=> {
-		if(err){
-			console.log('Error searching for anouncement');
-		} else {
-			data.announcements = result.rows;
-
-			console.log(data.announcements);
-			let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 1 OR project_id = 2`;
-			pool.query(query, (err, result)=> {
-				if(err){
-					console.log('Error searching for science');
-				} else {
-					data.science =result.rows;
-
-					let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 3 OR project_id = 6`;
-					pool.query(query, (err, result)=> {
-						if(err){
-							console.log('Error searching for art');
-						} else {
-							data.art =result.rows;
-
-							let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 4 OR project_id = 5`;
-							pool.query(query, (err, result)=> {
-								if(err){
-								} else {
-									data.humanities =result.rows;
-									res.render('home', data);
-									// console.log(data);
-								}
-							});
-						}
-					});
-				}
-			});
-		}
-	});
-});
+// 
 
 
 
-app.get('/classList', (req, res)=>{
-	console.log('searching')
-	const query = 'SELECT * FROM students';
-	pool.query(query, (err, result) => {
-		if (err){
-			console.log('error');
-		} else {
-
-
-			// get all student ids
-
-			// CONSTRUCT THIS QUERY
-			// SELECT name, description, due_date FROM student_project JOIN projects On project_id = id WHERE student_id IN (15,23);
-
-
-			// make query
-
-			// get results
-
-			// loop through results and match to the result.rows of students
-			const data = {
-				student : result.rows
-			}
-			res.render('classlist', data);
-		};
-	});
-});
 
 app.get('/classList/:id', (req, res)=> {
 	console.log("searching");
@@ -179,77 +92,51 @@ app.get('/classList/:id', (req, res)=> {
 })
 
 
-app.get('/projects', (req, res)=>{
-	console.log('searching')
-	const query = 'SELECT * FROM projects';
-	pool.query(query, (err, result) => {
-		if (err){
-			console.log('error');
-		} else {
-			const data = {
-				project : result.rows
-			}
-			res.render('projects', data)
-		};
-	});
-});
 
-app.get('/quotes', (req, res)=>{
-	console.log('looking for quotes');
-	const query = 'SELECT * FROM quotes ORDER BY id DESC LIMIT 1'; 
 
-	pool.query(query, (err, result)=> {
-		if(err){
-			console.log('Error searching for quotes');
-		} else {
-			res.json(result.rows);
-		}
-	});
-});
-
-app.post('/quotes', (req,res)=> {
-	console.log('ok, logging');
-	const query = 'INSERT INTO quotes( quote) VALUES($1)';
-	const value = [req.body.quote];
-	console.log(value);
-	pool.query(query, value, (err,result)=> {
-		if(err){
-			console.log('err',err);
-		} else {
-			console.log( 'Good');
-			res.redirect('/');
-		}
-	});
-});
+// app.post('/quotes', (req,res)=> {
+// 	console.log('ok, logging');
+// 	const query = 'INSERT INTO quotes( quote) VALUES($1)';
+// 	const value = [req.body.quote];
+// 	console.log(value);
+// 	pool.query(query, value, (err,result)=> {
+// 		if(err){
+// 			console.log('err',err);
+// 		} else {
+// 			console.log( 'Good');
+// 			res.redirect('/');
+// 		}
+// 	});
+// });
 
 // app.get('/register', (req, res)=>{
 // 	res.render('signUp');
 // })
 
-app.post ('/projects',(req,res)=>{
-	let num = (req.body.id);
-	let query = `SELECT name from students WHERE id = ${num} `;
-	pool.query(query, (err,result)=> {
-		if(err | req.body.name != result.rows[0].name){
-			console.log("error", err);
-			console.log(result.rows[0].name);
-			console.log('You are not allowed to sign up.')
-			res.redirect('/');
-		} else  {
+// app.post ('/projects',(req,res)=>{
+// 	let num = (req.body.id);
+// 	let query = `SELECT name from students WHERE id = ${num} `;
+// 	pool.query(query, (err,result)=> {
+// 		if(err | req.body.name != result.rows[0].name){
+// 			console.log("error", err);
+// 			console.log(result.rows[0].name);
+// 			console.log('You are not allowed to sign up.')
+// 			res.redirect('/');
+// 		} else  {
 
-			let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
-			value = [ req.body.id,req.body.projectId]
-			pool.query(queryString,value,(err)=>{
-				if(err){
-					console.log("err",err)
-				} else {
-					console.log('done');
-					res.render('confirmation');
-				}
-			});
-		} 
-	});	
-});
+// 			let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
+// 			value = [ req.body.id,req.body.projectId]
+// 			pool.query(queryString,value,(err)=>{
+// 				if(err){
+// 					console.log("err",err)
+// 				} else {
+// 					console.log('done');
+// 					res.render('confirmation');
+// 				}
+// 			});
+// 		} 
+// 	});	
+// });
 
 app.get('/login', (req, res)=>{
 	res.render('teacher/logIn');
