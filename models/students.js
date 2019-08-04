@@ -46,7 +46,6 @@ module.exports = (dbPoolInstance) => {
                   } else {
                     data.humanities =result.rows;
                     callback(null, data);
-
                     
                   }
                 });
@@ -123,14 +122,14 @@ module.exports = (dbPoolInstance) => {
 let signUp = (data,callback)=>{
     
     console.log('signing up');
-    let num = (data.id);
-    let query = `SELECT name from students WHERE id = ${num} `;
+    const num = (data.id);
+    const query = `SELECT name from students WHERE id = ${num} `;
     dbPoolInstance.query(query, (err,result)=> {
     if(err | data.name != result.rows[0].name){
       callback(err, null);
     } else  {
 
-      let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2) RETURNING *";
+      const queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2) RETURNING *";
       value = [ data.id,data.projectId];
       dbPoolInstance.query(queryString,value,(err)=>{
         if(err){
@@ -144,10 +143,99 @@ let signUp = (data,callback)=>{
   }); 
 };
 
+// let admin = (callback)=> {
+//   callback();
+// }
 
 
+let login = (data,callback) =>{
+  if( data.name === "George" & sha256(data.password + SALT) === sha256("banana" + SALT)){
+    callback(true);
+  } else {
+    callback(false);
+  }
+};
+
+let postAnnouncement = (data, callback) => {
+  console.log(" trying to post");
+  let news = data.announcement;
+  const query = 'INSERT INTO anouncement( anouncement) VALUES($1) RETURNING *';
+    const value = [news];
+    dbPoolInstance.query(query, value,(err, result) => {
+      if (err){
+        callback(err, null);
+      } else {
+         
+          callback(null, result);
+      };
+    });
+};
+
+let postProjectForm = (data,callback)=>{
+    console.log('searching')
+    const query = 'INSERT INTO projects(teacher_ic,category,name,description) VALUES($1,$2,$3,$4) RETURNING *';
+    let value = [data.teacher_ic, data.category, data.name, data.description];
+    dbPoolInstance.query(query,value, (err, result) => {
+      if (err){
+        callback(err, null);
+      } else {
+          // const data = {
+          // student : result.rows
+          // };
+          callback(null, result.rows);
+      }
+    });
+};
+
+let deleteProject = (data,callback) => {
+  let deleteId = data.id;
+  console.log('deleting a project');
+  const query = `DELETE FROM projects WHERE id = ${deleteId}`; 
+  dbPoolInstance.query(query, (err, result) => {
+    if (err){
+      callback(err, null);
+    } else {
+        const data = {
+        project : result.rows
+        };
+        callback(null, data);
+    };
+  });
+};
 
 
+let addStudent = (info, callback) => {
+  console.log('add new student')
+   const query = 'INSERT INTO students(name, profile_pic) VALUES($1,$2) RETURNING *';
+    let value = [info.name, info.pic];
+    dbPoolInstance.query(query,value, (err, result) => {
+      if (err){
+        callback(err, null);
+      } else {
+          const data = {
+          student : result.rows
+          };
+          callback(null, data.student);
+      }
+    });
+};
+
+let removeThisStudent = (data,callback)=> {
+  let deleteId = data.id;
+  console.log('deleting a project');
+  const query = `DELETE FROM students WHERE id = ${deleteId}`; 
+  dbPoolInstance.query(query, (err, result) => {
+    if (err){
+      callback(err, null);
+    } else {
+        const data = {
+        project : result.rows
+        };
+        callback(null, data);
+    };
+  });
+
+}
 
 
 
@@ -157,10 +245,20 @@ let signUp = (data,callback)=>{
     getProjects,
     getQuotes,
     postQuotes,
-    signUp
+    signUp,
+    // admin,
+    login,
+    postAnnouncement,
+    addStudent,
+    // postProjectForm
+    deleteProject,
+    removeThisStudent
+    
   };
-
 };
+
+
+
 
 
 

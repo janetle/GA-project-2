@@ -3,7 +3,7 @@ var newQuotes = function() {
 		console.log(this.responseText)
 		let data = JSON.parse(this.responseText);
 		console.log('Hi there')
-		console.log(data.quote);
+		
 			data.map(data => {
 				let div =document.createElement('div');
 				

@@ -1,7 +1,4 @@
-// let backToMain = setTimeout(()=>{
-// 	console.log('trying to redirect')
-// 	window.location.href = "http://localhost:3000/login"
-// }, 2000);
+
 
 var signUpForm = ()=>{
 	let signUp = document.querySelectorAll('.signUp');
@@ -10,6 +7,13 @@ var signUpForm = ()=>{
 	signUp.forEach((item)=>{
 		item.addEventListener("click", openForm)
 	})
+}
+
+var login = ()=>{
+
+	let admin = document.querySelector('.login');
+	console.log(admin);
+	admin.addEventListener('click',openForm);
 }
 
 var cancelForm = ()=>{
@@ -27,14 +31,14 @@ var closeForm = ()=> {
 	document.getElementById("myForm").style.display = "none";
 };
  
-var showAlert = ()=>{
- let success = document.querySelector('#success');
- success.addEventListener('click',confirmSignup )
-}
-var confirmSignup =()=> {
-	alert(" Done");
+// var showAlert = ()=>{
+//  let success = document.querySelector('#success');
+//  success.addEventListener('click',confirmSignup )
+// }
+// var confirmSignup =()=> {
+// 	alert(" Done");
 	
-}
 console.log('testing')
 signUpForm();
 cancelForm();
+login();

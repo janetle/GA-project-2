@@ -94,63 +94,19 @@ app.get('/classList/:id', (req, res)=> {
 
 
 
-// app.post('/quotes', (req,res)=> {
-// 	console.log('ok, logging');
-// 	const query = 'INSERT INTO quotes( quote) VALUES($1)';
-// 	const value = [req.body.quote];
-// 	console.log(value);
-// 	pool.query(query, value, (err,result)=> {
-// 		if(err){
-// 			console.log('err',err);
-// 		} else {
-// 			console.log( 'Good');
-// 			res.redirect('/');
-// 		}
-// 	});
-// });
 
-// app.get('/register', (req, res)=>{
-// 	res.render('signUp');
-// })
 
-// app.post ('/projects',(req,res)=>{
-// 	let num = (req.body.id);
-// 	let query = `SELECT name from students WHERE id = ${num} `;
-// 	pool.query(query, (err,result)=> {
-// 		if(err | req.body.name != result.rows[0].name){
-// 			console.log("error", err);
-// 			console.log(result.rows[0].name);
-// 			console.log('You are not allowed to sign up.')
-// 			res.redirect('/');
-// 		} else  {
 
-// 			let queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2)";
-// 			value = [ req.body.id,req.body.projectId]
-// 			pool.query(queryString,value,(err)=>{
-// 				if(err){
-// 					console.log("err",err)
-// 				} else {
-// 					console.log('done');
-// 					res.render('confirmation');
-// 				}
-// 			});
-// 		} 
-// 	});	
-// });
 
-app.get('/login', (req, res)=>{
-	res.render('teacher/logIn');
-});
+// app.post('/login',(req, res)=>{
+// 	if( req.body.username === "George" & sha256(req.body.password + SALT) === sha256("banana" + SALT)){
+// 		let hasshedUsername = sha256('GEORGE' + SALT);
+// 		res.cookie("loggedin", hasshedUsername);
+// 		res.render('teacher/home');
+// 	} else {
+// 		res. send ('You are not authorised to perform this action.')
+// 	}
 
-app.post('/login',(req, res)=>{
-	if( req.body.username === "George" & sha256(req.body.password + SALT) === sha256("banana" + SALT)){
-		let hasshedUsername = sha256('GEORGE' + SALT);
-		res.cookie("loggedin", hasshedUsername);
-		res.render('teacher/home');
-	} else {
-		res. send ('You are not authorised to perform this action.')
-	}
-});
 
 app.get('/login/classlist',(req, res)=>{
 	res.render('teacher/classlist')

@@ -78,10 +78,27 @@ class HOME extends React.Component {
               <div class="collapse navbar-collapse show justify-content-end" id="navbarSupportedContent">
                   <a class="nav-link" href="/classlist">Class members</a>
                   <a class="nav-link" href="/projects"> SIA Projects</a>
-                  <a class="nav-link" href="/login">Admin</a>
+                  <button type="submit" class= "login">Admin</button>
 
               </div>
             </nav>
+
+
+
+            <div class="form-popup form-container" id="myForm">
+                <form  autocomplete="off" method='POST' action='/login'>
+                  <h1> Log in</h1>
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="your name" name="name" autocomplete="off" autofocus />
+
+                  <label for="password"><b>Password</b></label>
+                  <input type="password" name="password" placeholder="password" required />
+                  <button type="submit" class="btn" id = " success" >Sign up</button>
+                  
+                </form>
+                <button type="submit" class="btn cancel">Cancel</button>
+            </div>
+
             <div class = "main-info">
               <div class = "row">
                 <div class ="col-sm-12 col-md-3 sidebar">
@@ -98,7 +115,7 @@ class HOME extends React.Component {
                     <h4 class="display-7">Weather forecast</h4>
                     <div id ="ty"></div>
                     
-                    <a class="btn btn-primary btn-sm mt-10 btn-warning" href="#" role="button">Find out more</a>
+                    <a class="btn btn-primary btn-sm mt-10 btn-warning" href="https://www.nea.gov.sg/weather" role="button">Find out more</a>
                   </div>
                 </div>
 
@@ -161,6 +178,7 @@ class HOME extends React.Component {
           </div>
 
           <script src='script1.js'></script>
+          <script src='script3.js'></script>
           
         </body>
         </html>

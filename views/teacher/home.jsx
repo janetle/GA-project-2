@@ -1,41 +1,194 @@
 var React = require("react");
+class Announcement extends React.Component {
+    render() {
+        return (
+          <li >{this.props.item.anouncement}</li>
+        );
+    };
+};
+
+
+class Science extends React.Component {
+    render() {
+        return (
+          <li>{this.props.item.name}</li>
+        );
+    };
+};
+
+class Art extends React.Component {
+    render() {
+        return (
+          <li>{this.props.item.name}</li>
+        );
+    };
+};
+
+class Humanities extends React.Component {
+    render() {
+        return (
+          <li>{this.props.item.name}</li>
+        );
+    };
+};
+
 
 class HOME extends React.Component {
   render() {
+    // console.log('trying to find the truth');
+    
+    let announcementElements = this.props.announcements.map( (item, index) => {
+     
+    return <Announcement item={item}></Announcement>;
+  });
+
+    let scienceElements = this.props.science.map( (item, index) => {
+    return <Science item={item}></Science>;
+  });
+
+    let artElements = this.props.art.map( (item, index) => {
+    return <Art item={item}></Art>;
+  });
+
+    let humanitiesElements = this.props.humanities.map( (item, index) => {
+    return <Humanities item={item}></Humanities>;
+  });
+
     return (
       <html lang="en">
         <head>
-          
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="style.css"/>
+          <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap|Open+Sans|Roboto+Condensed:300&display=swap" rel="stylesheet" />
+
         </head>
         <body>
-          <header>
-            <h1>Welcome to Hackberry Class</h1>
-            <nav>
-              <a href="/login/classlist">Class Members</a>
-              <a href="/login/projects">Projects</a>
-            </nav>
-          </header>
-          
-            <form method={'POST'} action={'/newProject'}>
-              <p> Add new projecr</p>
-              <input type={'text'} placeholder={'name'} name={'name'} /><br />
-              <input type={'text'} placeholder={'description'} name={'description'} /><br />
-              <input type={'text'} placeholder={'due date'} name={'due_date'} /><br />
-              <button type={'submit'}>Submit</button>
-            </form>
-            <p> Add new student</p>
-            <form method={'POST'} action={'/newStudent'}>
-              <input type={'text'} placeholder={'name'} name={'name'} /><br />
-              <input type={'text'} placeholder={'profile link'} name={'profile_pic'} /><br />
-              <input type={'text'} placeholder={'title'} name={'title'} /><br />
-              <button type={'submit'}>Submit</button>
-            </form>
-            <p> Make announcement</p>
-            <form method={'POST'} action={'/login/anouncement'}>
-              <input type={'text'} placeholder={'anouncement'} name={'anouncement'} /><br />
-              <button type={'submit'}>Submit</button>
-            </form>
 
+          <div class = "main">
+            
+            <nav class="navbar navbar-expand-sm navbar-light" id ="header">
+              <a class="logo" href="/"> <div id = "logopic">Home</div></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse show justify-content-end" id="navbarSupportedContent">
+                  <a class="nav-link" href="/classlist">Class members</a>
+                  <a class="nav-link" href="/projects"> SIA Projects</a>
+                  <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      George<span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li class="dropdown-header">Projects</li>
+                      <li><a class="dropdown-item" href="#">Delete project</a></li>
+                      <li><a class="dropdown-item" href="#">Edit project</a></li>
+                      <li><a class="dropdown-item" href="#">Add new project</a></li>
+                      <li class="dropdown-divider"></li>
+                      <li class="dropdown-header">Students</li>
+                      <li><a class="dropdown-item" href="#">Remove students</a></li>
+                      <li><a class="dropdown-item" href="#">Edit students</a></li>
+                      <li><a class="dropdown-item" href="#">Add new students</a></li>
+                      <li class="dropdown-divider"></li>
+                      <li class="dropdown-header">Announcement</li>
+                      <li><a class="dropdown-item" href="#">Make announcement</a></li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                    </ul>
+                  </div>
+              </div>
+            </nav>
+
+
+
+             <h1>Welcome back, George</h1>
+
+            <div class = "main-info">
+              <div class = "row">
+                <div class ="col-sm-12 col-md-3 sidebar">
+                  <div class="jumbotron weatherbar">
+                    
+                    <h3 id = "heading"> What inspires you today, Hackberry?</h3>
+                    <form class="form-inline my-2 my-sm-0" method='POST' action='/quotes'>
+                      <input name = "quote" class="form-control mb-2 mr-sm-2" type="text" placeholder="Your quote" aria-label="quote"/>
+                      <button class="btn btn-primar btn-sm mt-20 btn-warning" type="submit">Submit</button>
+                      <h5 class="display-5" id = "quotes"></h5>
+                    </form>
+                    <div > </div>
+                    <hr class="my-4" />
+                    <h4 class="display-7">Weather forecast</h4>
+                    <div id ="ty"></div>
+                    
+                    <a class="btn btn-primary btn-sm mt-10 btn-warning" href="#" role="button">Find out more</a>
+                  </div>
+                </div>
+
+                <div class = "col-md-9">
+                  <div class ="row">
+                    <div class="announcement mb-4">
+                      <h4 class="display-7">Announcement</h4>
+                        <div id ="announcement">{announcementElements}</div>
+                    </div>
+                  </div>
+
+                  <div class = "row categ" >  
+                    <h4> SIA Categories</h4>
+
+                  </div>
+
+                  <div class = "row namelist" >  
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Science</h5>
+                            <h6 class= "card-text"> Teacher in charge: name</h6>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="science">{scienceElements}</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Art</h5>
+                            <p class= "card-text"> <strong>Teacher in charge: name</strong></p>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="art">{artElements}</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-sm-12 col-md-4 ">
+                      <div class = "card mb-4">
+                          <div class = "card-body text-center">
+                           <h5 class = "card-title"> Humanities</h5>
+                            <p class= "card-text"> <strong>Teacher in charge: name</strong></p>
+                            <p class ="card-text">
+                            <ol class= "text-left" id ="humanities">{humanitiesElements }</ol>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <nav class="navbar navbar-light show justify-content-center " id ="footer">
+              <p id = "center"> © Strictly for Hackberry students and teachers only </p>
+            </nav>
+          </div>
+           <nav class="navbar navbar-light show justify-content-center " id ="footer">
+              <p id = "center"> © Strictly for Hackberry students and teachers only </p>
+            </nav>
+
+          <script src='script1.js'></script>
+          <script src='script3.js'></script>
+          
         </body>
         </html>
     );
