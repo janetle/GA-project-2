@@ -28,6 +28,7 @@ var openForm = ()=> {
 };
 
 var closeForm = ()=> {
+	console.log("HI")
 	document.getElementById("myForm").style.display = "none";
 };
  

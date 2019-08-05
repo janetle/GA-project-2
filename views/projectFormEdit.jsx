@@ -7,7 +7,7 @@ class ProjectForm extends React.Component {
     return (
       <DefaultLayout>
           
-          <div class="new" >
+          <div class="new" id ="myForm">
               <form  autocomplete="off" method='POST' action='/projectsdelete'>
                 <h2> Edit project</h2>
                 <input type="text" placeholder="Project name" required name="name" autocomplete="off" autofocus />
@@ -25,7 +25,7 @@ class ProjectForm extends React.Component {
               </form>
               <button type="submit" class="btn cancel">Cancel</button>
           </div>
-
+          <script src ="/script3.js"></script>
       </DefaultLayout>
     );
   };

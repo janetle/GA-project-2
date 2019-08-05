@@ -7,13 +7,13 @@ class Student extends React.Component {
     return (
       
         <DefaultLayout>
-           <div class="new" >
+           <div class="new"  id = "myForm">
                 <form autocomplete="off" method='POST' action='/studentsdelete'>
                   <h2> Remove student</h2>
                   <input type="text" placeholder="Student name" name="name" required autocomplete="off" autofocus />
 
                   <input type="text" name="id" placeholder="id"/>
-
+                  <p>adasdsadasd</p>
                   <input type="text" name="pic" placeholder="Student's photo"/>
 
                   <button type="submit" class="btn">Remove</button>
@@ -25,7 +25,7 @@ class Student extends React.Component {
             <nav class="navbar navbar-light show justify-content-center " id ="footer">
               <p id = "center"> © Copyright Hackberry 2019 </p>
             </nav>
-          
+          <script src ="/script3.js"></script>
        </DefaultLayout>
     );
   }

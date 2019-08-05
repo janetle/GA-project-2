@@ -54,11 +54,12 @@ class Project extends React.Component {
 
               <div class="collapse navbar-collapse show justify-content-end" id="navbarSupportedContent">
                   <a class="nav-link" href="/classlist">Class members</a>
-                  <a class="nav-link ml-6" href="/login">Admin</a>
+                  <a class="nav-link ml-6 login" href="#">Admin</a>
               </div>
             </nav>
           
             <p class = "instruction">Hey, Hackberry! Choose your suitable projects!</p>
+
             
       
             <div class="form-popup form-container" id="myForm">
@@ -66,7 +67,7 @@ class Project extends React.Component {
                   <h1> Sign up </h1>
                   <label for="name"><b>Name</b></label>
                   <input type="text" placeholder="your name" name="name" autocomplete="off" autofocus />
-
+                  
                   <label for="id"><b>Student Id</b></label>
                   <input type="text" name="id" placeholder="your id" required />
 

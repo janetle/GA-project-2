@@ -5,7 +5,7 @@ module.exports = (app, allModels) => {
     const users = require('./controllers/index')(allModels);
     app.get('/', users.showHomepage);
     app.get('/login',users.adminLogin);
-    app.post('/login', users.gotLogin);
+    app.post('/login', users.gotlogin);
     app.get('/classList',users.showClasslist);
     app.get('/projects', users.showProjects);
     app.post('/projects', users.gotSignUp);
@@ -23,6 +23,11 @@ module.exports = (app, allModels) => {
 	app.post('/studentsnew',users.addNewStudent);
 	app.get('/studentsdelete',users.removeStudentForm);
 	app.post('/studentsdelete',users.removeStudent);
-	// app.get('/studentsedit', users.getStudentEditForm)
+	// app.get('/studentsedit', users.getStudentEditForm);
+	app.post('/logout',users.gotLogout)
+
+
+
+	// app.get('/secret_page',users.secretPage);
 }
 

@@ -2,6 +2,13 @@
 
 const SALT = "CARROT IS BOTH FRUIT AND VEGGIE";
 var sha256 = require('js-sha256');
+// var checkLoginStatus(req, res) => {
+//   if(sha256(req.cookies["user_id"] + 'logged_in' + SALT) === req.cookies["logged_in"]){ 
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 
 module.exports = (db) => {
 
@@ -75,31 +82,14 @@ module.exports = (db) => {
     db.students.signUp(info,(err, queryResult) => {
         if (err) {
           console.error('error', err);
-          res.sendStatus(500);
+          res.render('reject')
         } else {
+          console.log('done');
           res.render('confirmation');
         }
     });
   };
 
-  // const gotLogin = (req, res)=>{
-  //   let info = req.body;
-  //   console.log(info);
-  //   db.students.login(info, (err,queryResult)=>{
-  //     if (err) {
-  //         console.error('error', err);
-  //         res.sendStatus(500);
-  //     } else if(queryResult===false){
-  //         res.alert('Please enter correct username and password')
-  //     } else if(queryResult===true){
-  //       let hasshedUsername = sha256('GEORGE' + SALT);
-  //       res.cookie("loggedin", hasshedUsername);
-  //       res.render('./teacher/home');
-  //     } else {
-  //       res.redirect('/');
-  //     }
-  //   });
-  // };
   const adminLogin = (req, res) => {
     
     // db.students.admin( () => {
@@ -107,24 +97,28 @@ module.exports = (db) => {
       res.render("teacherHome")
   };
 
- 
 
-  const gotLogin = (req, res)=> {
+  const gotlogin = (req, res)=> {
     let data = req.body;
-    db.students.login(data,(queryResult) => {
-      if (queryResult===true) {
+    db.students.login(data,(isLoggedIn) => {
+      if (isLoggedIn===true) {
         
         let hasshedUsername = sha256('GEORGE' + SALT);
+        let loggedin;
         res.cookie("loggedin", hasshedUsername);
         res.render('./teacherHome');
           
-        } else {
+      } else {
          
-          res.send('Please enter correct username and password');
-        }
-      });
+        res.send('Please enter correct username and password');
+      }
+    });
   };
 
+
+  const secretPage = (req, res) =>{
+    console.log(req.cookies);
+  }
 
   const makeAnnouncement = (req, res) => {   
     res.render('./teacher/announcement');
@@ -164,21 +158,27 @@ module.exports = (db) => {
   };
 
   const getDeleteProject = (req, res)=> {
-    res.render('projectFormDelete')
-  }
-  const deletedProject = (req, res) => {
-    let data = req.body;
-    db.students.deleteProject(data,(err,queryResult) => {
-      if (err) {
-        console.error('error', err);
-        res.sendStatus(500);
-      } else {
-        res.render('confirmation');
-      }
-    });
-
+    var cookieThatWasSet = "906367c8bce992f7d1b596ca6fb772b68a224fbde8c55ada4f418cd8e9683382";
+    if(cookieThatWasSet === req.cookies["loggedin"]){
+      res.render('projectFormDelete');
+    } else {
+      res.send('HI');
+    }
   };
+  const deletedProject = (req, res) => {
+    if(loggedin === "906367c8bce992f7d1b596ca6fb772b68a224fbde8c55ada4f418cd8e9683382"){
 
+      let data = req.body;
+      db.students.deleteProject(data,(err,queryResult) => {
+        if (err) {
+          console.error('error', err);
+          res.sendStatus(500);
+        } else {
+          res.render('confirmation');
+        }
+      });
+    };
+  }
   const getEditProject = (req, res)=> {
     res.render('projectFormEdit');
   }
@@ -208,7 +208,7 @@ const removeStudent = (req, res) => {
       console.error('error', err);
       res.sendStatus(500);
     } else {
-      res.render('confirmation');
+        res.render('confirmation');
     }
   });
 };
@@ -220,15 +220,13 @@ const getStudentEditForm = (req, res) => {
 
 
 
-  // const gotLogout= (req, res)=>{
-  //   if(err){
-  //     console.error('error', err);
-  //     res.sendStatus(500);
-  //   } else {
-  //   res.clearcookies();
-  //   res.redirect('/')
-  //   }
-  // };
+  const gotLogout= (req, res)=>{
+    
+    res.clearCookie("loggedin");
+    console.log( "redirect")
+    res.redirect('/');
+  };
+
  
 
 
@@ -242,7 +240,7 @@ const getStudentEditForm = (req, res) => {
     updateQuotes,
     gotSignUp,
     adminLogin,
-    gotLogin,
+    gotlogin,
     makeAnnouncement,
     announcement,
     postNewProject,
@@ -253,10 +251,11 @@ const getStudentEditForm = (req, res) => {
     getStudentForm,
     addNewStudent,
     removeStudentForm,
-    removeStudent
+    removeStudent,
+    secretPage,
 
-    // gotLogout
-    
+    gotLogout
+   
   };
 }
 

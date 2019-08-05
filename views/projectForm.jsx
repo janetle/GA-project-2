@@ -9,6 +9,8 @@ class ProjectForm extends React.Component {
     return ( 
 
        <DefaultLayout>
+
+       
         
         <div class="new" >
           <form  autocomplete="off" method='POST' action='/projectsnew'>

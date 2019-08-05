@@ -122,22 +122,26 @@ module.exports = (dbPoolInstance) => {
 let signUp = (data,callback)=>{
     
     console.log('signing up');
-    const num = (data.id);
-    const query = `SELECT name from students WHERE id = ${num} `;
+    const num1 = data.id;
+    const num2 = data.projectId;
+    console.log(num1, num2);
+    
+    const query = `SELECT * from student_project WHERE student_id = ${num1} AND project_id = ${num2} `;
     dbPoolInstance.query(query, (err,result)=> {
-    if(err | data.name != result.rows[0].name){
-      callback(err, null);
-    } else  {
+    if(err){
 
-      const queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2) RETURNING *";
-      value = [ data.id,data.projectId];
-      dbPoolInstance.query(queryString,value,(err)=>{
-        if(err){
-          callback(err, null);
-        } else {
-          console.log('done');
-          callback(null, result);
-        };
+      callback(err, null);
+    } else if(result.rows.length < 1) {
+
+        const queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2) RETURNING *";
+        value = [ data.id,data.projectId];
+        dbPoolInstance.query(queryString,value,(err)=>{
+          if(err){
+            callback(err, null);
+          } else {
+            console.log('done');
+            callback(null, result);
+          };
       });
     }
   }); 
@@ -149,12 +153,27 @@ let signUp = (data,callback)=>{
 
 
 let login = (data,callback) =>{
-  if( data.name === "George" & sha256(data.password + SALT) === sha256("banana" + SALT)){
+  
+ if( data.name === "George" & sha256(data.password + SALT) === sha256("banana" + SALT)){
     callback(true);
   } else {
     callback(false);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let postAnnouncement = (data, callback) => {
   console.log(" trying to post");

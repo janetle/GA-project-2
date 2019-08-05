@@ -11,7 +11,7 @@ class DefaultLayout extends React.Component {
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
           <link rel="stylesheet" href="style.css"/>
-          <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap|Open+Sans|Roboto+Condensed:300&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap|Open+Sans|Libre+Caslon+Text:700|Roboto+Condensed:300&display=swap" rel="stylesheet" />
 
         </head>
         <body>
@@ -42,7 +42,7 @@ class DefaultLayout extends React.Component {
                       <li class="dropdown-header">Announcement</li>
                       <li><a class="dropdown-item" href="/announcement">Make announcement</a></li>
                       <li class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                      <li><form method='POST' action='/logout'><button type ="submit"> Log out</button></form></li>
                     </ul>
                   </div>
               </div>

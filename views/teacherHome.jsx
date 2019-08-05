@@ -7,9 +7,9 @@ class HOME extends React.Component {
     
     return (
       <DefaultLayout>
-      
-        <h1 class = "george">Welcome back, George</h1>
-
+      	<div class = "back">
+        	<h1 class = "george">Welcome back, George!</h1>
+        </div>
         <script src ="script4.js"></script>
     </DefaultLayout>
     );

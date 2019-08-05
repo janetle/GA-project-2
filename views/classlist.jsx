@@ -1,5 +1,5 @@
 var React = require("react");
-
+var DefaultLayout = require('./layouts/default')
 
 
 
@@ -8,20 +8,16 @@ class ListItem extends React.Component {
     render() {
       console.log(this.props.item);
         return (
-          <li>
-            <p> Name : {this.props.item.name}</p>
-            <p>Profile photo : {this.props.item.profile_pic}</p>
-            <button> <a href= "#">Remove this student</a></button>
-            <div class = 'toggle'>
-           
-            </div>
-
+          <li class = "item classlist">
+            <p class = "item-title"> Name : {this.props.item.name}</p>
+            <p class = "item-photos">Profile photo <br />
+            {this.props.item.profile_pic}</p>
+       
           </li>
         );
     }
 
 };
-
 
 
 
@@ -32,18 +28,21 @@ class ClassList extends React.Component {
         return <ListItem item={item}></ListItem>;
       });
       return (
-        <html lang="en">
-          <head>
-            
-          </head>
-          <body>
-            <header>
-              <h1>Welcome to Hackberry Class</h1>
-              <nav>
-                <a href="/teacher">Home</a>
-                <a href="/projects">Projects</a>
-              </nav>
-            </header>
+        <DefaultLayout>
+            <div class="form-popup form-container" id="myForm">
+                <form  autocomplete="off" method='POST' action='/login'>
+                  <h1> Log in</h1>
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="your name" name="name" autocomplete="off" autofocus />
+
+                  <label for="password"><b>Password</b></label>
+                  <input type="password" name="password" placeholder="password" required />
+                  <button type="submit" class="btn" id = " success" >Sign up</button>
+                  
+                </form>
+                <button type="submit" class="btn cancel">Cancel</button>
+            </div>
+        
 
             <div >
 
@@ -52,14 +51,10 @@ class ClassList extends React.Component {
               </ol>
               
             </div> 
-
-            <footer>
-              <p>Strictly for Hackberry students only</p>
-              <a href="">Admin</a>
-            </footer>
-            
-          </body>
-          </html>
+            <nav class="navbar navbar-light show justify-content-center " id ="footer">
+              <p id = "center"> © Copyright Hackberry 2019 </p>
+            </nav>
+       </DefaultLayout>
       );
     }
   }

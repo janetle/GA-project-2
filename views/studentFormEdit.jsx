@@ -7,7 +7,7 @@ class StudentEdit extends React.Component {
     return (
       <DefaultLayout>
           
-       <div class="new" >
+       <div class="new" id ="myForm" >
         <form  autocomplete="off" method='POST' action='/studentsnew'>
           <h2> Edit student</h2>
           <input type="text" placeholder="Student name" name="name" required autocomplete="off" autofocus />
@@ -21,7 +21,7 @@ class StudentEdit extends React.Component {
         </form>
         <button type="submit" class="btn cancel">Cancel</button>
       </div>
-
+      <script src ="/script3.js"></script>
 
       </DefaultLayout>  
        
