@@ -17,11 +17,12 @@ module.exports = (app, allModels) => {
 	app.post('/projectsnew',users.postNewProject);
 	app.get('/projectsdelete',users.getDeleteProject);
 	app.post('/projectsdelete',users.deletedProject);
-	   	// app.get('projects/edit',users.getEditProject)
+	// app.get('/projectsedit',users.getEditProject);
 	   	// app.post('projects/edit',users.editProject)
 	app.get('/studentsnew',users.getStudentForm);
 	app.post('/studentsnew',users.addNewStudent);
 	app.get('/studentsdelete',users.removeStudentForm);
 	app.post('/studentsdelete',users.removeStudent);
+	// app.get('/studentsedit', users.getStudentEditForm)
 }
 

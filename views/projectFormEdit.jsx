@@ -9,7 +9,7 @@ class ProjectForm extends React.Component {
           
           <div class="new" >
               <form  autocomplete="off" method='POST' action='/projectsdelete'>
-                <h2> Delete project</h2>
+                <h2> Edit project</h2>
                 <input type="text" placeholder="Project name" required name="name" autocomplete="off" autofocus />
 
                 <input type="text" placeholder="Project Id" required name="id" autocomplete="off" autofocus />
@@ -20,7 +20,7 @@ class ProjectForm extends React.Component {
 
                 <input type="text" name="description" placeholder="Description"/>
 
-                <button type="submit" class="btn">Delete</button>
+                <button type="submit" class="btn">Edit</button>
                 
               </form>
               <button type="submit" class="btn cancel">Cancel</button>

@@ -177,6 +177,10 @@ module.exports = (db) => {
       }
     });
 
+  };
+
+  const getEditProject = (req, res)=> {
+    res.render('projectFormEdit');
   }
 
 const getStudentForm = (req, res) => {
@@ -209,6 +213,10 @@ const removeStudent = (req, res) => {
   });
 };
 
+const getStudentEditForm = (req, res) => {
+    res.render('studentFormEdit');
+}
+
 
 
 
@@ -240,6 +248,7 @@ const removeStudent = (req, res) => {
     postNewProject,
     getNewProject,
     getDeleteProject,
+    getEditProject,
     deletedProject,
     getStudentForm,
     addNewStudent,

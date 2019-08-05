@@ -58,7 +58,7 @@ class Project extends React.Component {
               </div>
             </nav>
           
-            <p class = "instruction">Hey, Hackberry! Choose your suitable projects from the list below</p>
+            <p class = "instruction">Hey, Hackberry! Choose your suitable projects!</p>
             
       
             <div class="form-popup form-container" id="myForm">
@@ -86,7 +86,7 @@ class Project extends React.Component {
             </div>     
             <footer>
               <nav class="navbar navbar-light show justify-content-center " id ="footer">
-              <p id = "center"> © Strictly for Hackberry students and teachers only </p>
+              <p id = "center"> © Copyright Hackberry 2019 </p>
             </nav>
             </footer>
 

@@ -20,8 +20,13 @@ a.nav-link{
 }
 
 .navbar-light{
-	background-color:#23629F;
+	background-color:#006FA1;
 	padding:0;
+}
+#footer {
+	background-color:#006FA1;
+	padding-top: 10px;
+	color: white;
 }
 .login{
 	background-color: transparent;
@@ -30,11 +35,21 @@ a.nav-link{
 	border: none;
 
 }
+#heading{
+	margin: 30px 0px 20px;
+}
 .card{
 	height:400px;
-	background-color: #e9ecef;
+	background-color: #E9ECEF;
 	overflow: scroll;
+	outline: none;
+	border-top: none;
+	color:#484848;
 
+}
+.wrapper {
+	width: 90%;
+	margin: 0 auto;
 }
 ol {
 	padding-left: 15px;
@@ -65,7 +80,7 @@ ol li{
 }
 */
 /* The popup form - hidden by default */
-.form-popup {
+.form-popup{
   display: none;
   position: fixed;
   bottom: 0;
@@ -75,14 +90,14 @@ ol li{
 }
 
 /* Add styles to the form container */
-.form-container {
+.form-container, .new {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container input[type=text], .form-container input[type=password], .new input[type=text], .new input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -91,13 +106,13 @@ ol li{
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type=text]:focus, .form-container input[type=password]:focus, .new input[type=text]:focus, .new input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+.form-container .btn, .new .btn  {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -109,12 +124,12 @@ ol li{
 }
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+.form-container .cancel, .new .cancel {
   background-color:  #F1D600;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover, .open-button:hover, .new .btn:hover{
   opacity: 1;
 }
 
@@ -155,23 +170,54 @@ border: 5px solid red;
 	margin-right:18px;
 }*/
 
-./*jumbotron.weatherbar{
+.jumbotron.weatherbar{
+	
+	font-family: 'Faster One', cursive;
+	color:#484848;
+	height: 680px;
+
 	padding: 20px;
 }
+.forecast {
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+.announcement,.categ {
+	box-sizing: border-box;
+	background-color: #BED73B;
+	width: 100%;
+	margin: 20px 0px 20px 0px;
+	color:gray;
+	
+	padding: 40px 40px 30px 40px;
+	font-family: 'Nunito', sans-serif;
+
+}
+.categ{
+	margin-bottom: 30px;
+	padding: 20px;
+	background-color: #E8EFEF;
+	
+
+}
+.categ h4 {
+	text-align: center;
+}
+
 
 .namelist .card{
 	height: 350px;
 	overflow: scroll;
-}*/
-
-
-/*@media (min-width: 576px){
-	.jumbotron {
-		background: RED;
-   		padding: 0;
-	}
 }
-*/
 
 
+.new {
+	
+	margin: 50px auto;
+	border: 3px solid #f1f1f1;
+  	z-index: 9;
+}
 
+.form-inline .form-control{
+	width: 100%;
+}
