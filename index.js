@@ -75,21 +75,21 @@ setRoutesFunction(app, allModels);
 
 
 
-app.get('/classList/:id', (req, res)=> {
-	console.log("searching");
-	const query = " SELECT name, description, due_date FROM student_project JOIN projects On project_id = id WHERE student_id =" + req.params;
-	pool.query(query, (err, result)=>{
-		if(err){
-			console.log("err",err);
-		} else {
-			console.log('Yeah!')
-			let data = {
-				item :result.rows
-			}
-			res.render('student',data)
-		}
-	})
-})
+// app.get('/classList/:id', (req, res)=> {
+// 	console.log("searching");
+// 	const query = " SELECT name, description, due_date FROM student_project JOIN projects On project_id = id WHERE student_id =" + req.params;
+// 	pool.query(query, (err, result)=>{
+// 		if(err){
+// 			console.log("err",err);
+// 		} else {
+// 			console.log('Yeah!')
+// 			let data = {
+// 				item :result.rows
+// 			}
+// 			res.render('student',data)
+// 		}
+// 	})
+// })
 
 
 
@@ -98,47 +98,7 @@ app.get('/classList/:id', (req, res)=> {
 
 
 
-// app.post('/login',(req, res)=>{
-// 	if( req.body.username === "George" & sha256(req.body.password + SALT) === sha256("banana" + SALT)){
-// 		let hasshedUsername = sha256('GEORGE' + SALT);
-// 		res.cookie("loggedin", hasshedUsername);
-// 		res.render('teacher/home');
-// 	} else {
-// 		res. send ('You are not authorised to perform this action.')
-// 	}
 
-
-app.get('/login/classlist',(req, res)=>{
-	res.render('teacher/classlist')
-});
-
-app.get('/login/projects',(req, res)=>{
-	res.render('teacher/projects')
-});
-
-// app.get('/login/anouncement',(req, res)=>{
-	
-// });
-
-
-app.get('/login/new/anouncement',(req, res)=> {
-	res.render('teacher/anouncement');
-});
-
-app.post('/login/anouncement',(req, res)=>{
-	console.log(req.body.anouncement);
-	const queryString = " INSERT INTO anouncement(anouncement) VALUES($1)";
-	value = [req.body.anouncement];
-	console.log(value);
-	pool.query(queryString,value,(err)=>{
-		if(err){
-			console.log("err",err)
-		} else {
-			console.log('done');
-			res.render('confirmation');
-		}
-	});
-});
 
 
 

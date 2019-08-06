@@ -8,9 +8,9 @@ class HOME extends React.Component {
     return (
       <DefaultLayout>
       	<div class = "back">
-        	<h1 class = "george">Welcome back, George!</h1>
+        	<h1 class = "george">Welcome back!</h1>
         </div>
-        <script src ="script4.js"></script>
+        <script src ="script3.js"></script>
     </DefaultLayout>
     );
   }

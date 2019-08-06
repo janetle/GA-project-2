@@ -42,7 +42,7 @@ class DefaultLayout extends React.Component {
                       <li class="dropdown-header">Announcement</li>
                       <li><a class="dropdown-item" href="/announcement">Make announcement</a></li>
                       <li class="dropdown-divider"></li>
-                      <li><form method='POST' action='/logout'><button type ="submit"> Log out</button></form></li>
+                      <li><form method='POST' action='/logout'><button class= "logout-item" type ="submit"> Log out</button></form></li>
                     </ul>
                   </div>
               </div>

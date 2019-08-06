@@ -1,5 +1,5 @@
 var React = require("react");
-var DefaultLayout = require('./layouts/default')
+var DefaultLayout = require('./layouts/defaultUser')
 
 
 
@@ -9,9 +9,8 @@ class ListItem extends React.Component {
       console.log(this.props.item);
         return (
           <li class = "item classlist">
-            <p class = "item-title"> Name : {this.props.item.name}</p>
-            <p class = "item-photos">Profile photo <br />
-            {this.props.item.profile_pic}</p>
+            <img src ={this.props.item.profile_pic} />
+            <p class = "item-title">{this.props.item.name}</p>
        
           </li>
         );

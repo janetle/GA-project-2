@@ -18,6 +18,7 @@ module.exports = (dbPoolInstance) => {
       art: [],
       humanities: []
     };
+
     let query = 'SELECT anouncement FROM anouncement ORDER BY id DESC LIMIT 2'; 
 
     dbPoolInstance.query(query, (err, result)=> {
@@ -32,6 +33,7 @@ module.exports = (dbPoolInstance) => {
             callback(err, null);
           } else {
             data.science =result.rows;
+            console.log("data science: ", data.science);
 
             let query = `SELECT name FROM students JOIN student_project ON id = student_id WHERE project_id = 3 OR project_id = 6`;
             dbPoolInstance.query(query, (err, result)=> {
@@ -131,7 +133,7 @@ let signUp = (data,callback)=>{
     if(err){
 
       callback(err, null);
-    } else if(result.rows.length < 1) {
+    } else if(result.rows.length === 0) {
 
         const queryString = " INSERT INTO student_project(student_id,project_id) VALUES( $1, $2) RETURNING *";
         value = [ data.id,data.projectId];
@@ -141,8 +143,12 @@ let signUp = (data,callback)=>{
           } else {
             console.log('done');
             callback(null, result);
-          };
+          }
       });
+    } else {
+        let studentResult = "signed";
+
+        callback(null,studentResult);
     }
   }); 
 };
@@ -160,15 +166,6 @@ let login = (data,callback) =>{
     callback(false);
   }
 };
-
-
-
-
-
-
-
-
-
 
 
 
@@ -209,15 +206,27 @@ let postProjectForm = (data,callback)=>{
 let deleteProject = (data,callback) => {
   let deleteId = data.id;
   console.log('deleting a project');
-  const query = `DELETE FROM projects WHERE id = ${deleteId}`; 
-  dbPoolInstance.query(query, (err, result) => {
-    if (err){
-      callback(err, null);
-    } else {
-        const data = {
-        project : result.rows
+  const query = `SELECT * from projects WHERE project_id = ${deletedId}  `;
+  dbPoolInstance.query(query, (err,result)=> {
+  if(err){
+    callback(err,null);
+  } else if (result.rows.length === 0){
+      let projectResult = "none";
+
+      callback(null,projectResult);
+  } else {
+
+      const queryResult = `DELETE FROM projects WHERE id = ${deleteId}`; 
+      dbPoolInstance.query(queryResult, (err, result) => {
+        if (err){
+          callback(err, null);
+        } else {
+            const data = {
+            project : result.rows
+            };
+            callback(null, data);
         };
-        callback(null, data);
+      });
     };
   });
 };
@@ -241,20 +250,32 @@ let addStudent = (info, callback) => {
 
 let removeThisStudent = (data,callback)=> {
   let deleteId = data.id;
-  console.log('deleting a project');
-  const query = `DELETE FROM students WHERE id = ${deleteId}`; 
-  dbPoolInstance.query(query, (err, result) => {
-    if (err){
-      callback(err, null);
-    } else {
-        const data = {
-        project : result.rows
-        };
-        callback(null, data);
-    };
-  });
+  console.log('removing a student');
+  const query = `SELECT * from students WHERE id = ${deletedId}`;
+  dbPoolInstance.query(query, (err,result)=> {
+  if(err){
+    callback(err,null);
+  } else if (result.rows.length === 0){
+      let listResult = "none";
 
-}
+      callback(null,listResult);
+  } else {
+
+      const query = `DELETE FROM students WHERE id = ${deleteId}`; 
+      dbPoolInstance.query(query, (err, result) => {
+        if (err){
+          callback(err, null);
+        } else {
+            const data = {
+            project : result.rows
+            };
+            callback(null, data);
+        };
+      });
+
+    }
+  });
+};
 
 
 
@@ -269,7 +290,7 @@ let removeThisStudent = (data,callback)=> {
     login,
     postAnnouncement,
     addStudent,
-    // postProjectForm
+    postProjectForm,
     deleteProject,
     removeThisStudent
     

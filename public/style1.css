@@ -89,7 +89,7 @@ padding: 20px 40px;
 .signUpButton{
 	margin: 0 auto;
 }
-.btn.cancel {
+.btn.cancel, .btn.cancel-login{
   background-color: red;
 }
 

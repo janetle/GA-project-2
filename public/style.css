@@ -150,18 +150,27 @@ ol li{
 }
 
 .item {
-width: 60%;
+height: 300px;
+width: 300px;
 background-color: #e8efef;	
 margin: 20px auto;
 padding: 20px 40px;
 }
 
 img {
-	width: 50px;
-	height: 50px;
+	width: 100%;
+	height: 90%;
 }
-
-
+.item-title {
+	text-align: center;
+	padding: 10px;
+}
+ .logout-item {
+ 	background-color: #4CAF50;
+ 	width: 100%;
+ 	height: 100%;
+ 	margin:0;
+ }
 
 
 /*
@@ -194,13 +203,13 @@ border: 5px solid red;
 	
 	font-family: 'Faster One', cursive;
 	color:#484848;
-	height: 680px;
+	height: 750px;
 
 	padding: 20px;
 }
 .forecast {
-	margin-top: 50px;
-	margin-bottom: 20px;
+	margin-top: 30px;
+	margin-bottom: 15px;
 }
 .announcement,.categ {
 	box-sizing: border-box;

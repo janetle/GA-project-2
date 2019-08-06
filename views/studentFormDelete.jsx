@@ -13,7 +13,7 @@ class Student extends React.Component {
                   <input type="text" placeholder="Student name" name="name" required autocomplete="off" autofocus />
 
                   <input type="text" name="id" placeholder="id"/>
-                  <p>adasdsadasd</p>
+                 
                   <input type="text" name="pic" placeholder="Student's photo"/>
 
                   <button type="submit" class="btn">Remove</button>

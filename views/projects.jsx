@@ -3,13 +3,16 @@ var React = require("react");
 class ListItem extends React.Component {
   
     render() {
+      console.log(this.props.item)
         return (
           <li >
             <div class = "item">
+
               
                 <h4 class = "item-title"> Project  {this.props.item.name}</h4>
-                <p class = "item-text">Teacher-in-charge:   </p>
-                <p class = "item-text">Project Id:   </p>
+                <p class = "item-text">Teacher-in-charge: <strong>{this.props.item.teacher_ic} </strong> </p>
+                <p class = "item-text">Project ID: <strong>{this.props.item.id} </strong>  </p>
+                <p class = "item-text">Category: <strong>{this.props.item.category}</strong>   </p>
                 <p class = "item-text"> Description : {this.props.item.description} </p>
                 <div class = "signUpButton">
                   <button class="open-button signUp"> Sign up</button>
@@ -59,6 +62,21 @@ class Project extends React.Component {
             </nav>
           
             <p class = "instruction">Hey, Hackberry! Choose your suitable projects!</p>
+
+             <div class="form-popup form-container" id="myLoginForm">
+                <form  autocomplete="off" method='POST' action='/login'>
+                  <h1> Log in</h1>
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="your name" name="name" autocomplete="off" autofocus />
+
+                  <label for="password"><b>Password</b></label>
+                  <input type="password" name="password" placeholder="password" required />
+                  <button type="submit" class="btn" id = " success-login" >Sign up</button>
+                  
+                </form>
+                <button type="submit" class="btn cancel-login">Cancel</button>
+            </div>
+
 
             
       

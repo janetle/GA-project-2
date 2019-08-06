@@ -61,7 +61,7 @@ class HOME extends React.Component {
           <div class = "main">
         
 
-            <div class="form-popup form-container" id="myForm">
+            <div class="form-popup form-container" id="myLoginForm">
                 <form  autocomplete="off" method='POST' action='/login'>
                   <h1> Log in</h1>
                   <label for="name"><b>Name</b></label>
@@ -113,7 +113,7 @@ class HOME extends React.Component {
                       <div class = "card mb-4">
                           <div class = "card-body text-center">
                            <h5 class = "card-title"> Science</h5>
-                            <h6 class= "card-text"> Teacher in charge: name</h6>
+                            <p class= "card-text"> Teacher in charge<br/> Mr Gray & Ms Wee</p>
                             <p class ="card-text">
                             <ol class= "text-left" id ="science">{scienceElements}</ol>
                             </p>
@@ -125,7 +125,7 @@ class HOME extends React.Component {
                       <div class = "card mb-4">
                           <div class = "card-body text-center">
                            <h5 class = "card-title"> Art</h5>
-                            <p class= "card-text"> Teacher in charge: name</p>
+                            <p class= "card-text"> Teacher in charge <br/> Ms Choo & Mr Jason</p>
                             <p class ="card-text">
                             <ol class= "text-left" id ="art">{artElements}</ol>
                             </p>
@@ -137,7 +137,7 @@ class HOME extends React.Component {
                       <div class = "card mb-4">
                           <div class = "card-body text-center">
                            <h5 class = "card-title"> Humanities</h5>
-                            <p class= "card-text">Teacher in charge: name</p>
+                            <p class= "card-text">Teacher in charge<br/> Ms Hellen & Mdm Cheong</p>
                             <p class ="card-text">
                             <ol class= "text-left" id ="humanities">{humanitiesElements }</ol>
                             </p>
