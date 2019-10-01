@@ -1,9 +1,15 @@
+/*----homepage----*/
 
 .main {
-	margin-left: 40px;
-	margin-right: : 40px;
+	background-color: #99ced3;
+	width:100%;
+	min-height: 900px;
+	margin: auto;
 }
+
+/*---navbar----*/
 #header {
+
 	padding-left: 40px;
 	padding-right: 30px;
 }
@@ -19,12 +25,12 @@ a.nav-link{
 	color:white;
 }
 
-.navbar-light{
-	background-color:#006FA1;
-	padding:0;
-}
+/*.navbar-light{
+	
+	padding:20px;
+}*/
 #footer {
-	background-color:#006FA1;
+	background-color:#4d6d9a;
 	padding-top: 10px;
 	color: white;
 }
@@ -39,46 +45,44 @@ a.nav-link{
 	margin: 30px 0px 20px;
 }
 .card{
-	height:400px;
-	background-color: #E9ECEF;
+	height:600px;
+	background-color: #86b3d1;
 	overflow: scroll;
 	outline: none;
 	border-top: none;
-	color:#484848;
+	color:#5f6366;
 
 }
 .wrapper {
 	width: 90%;
 	margin: 0 auto;
 }
-ol {
+ul {
 	padding-left: 15px;
-
+	list-style: none;
+	display:flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
 }
-ol li{
+ul li{
 	padding-left: 10px;
 	font-family: 'Roboto Condensed', sans-serif;
+	align-items: center;
 
 }
 .card-title{
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
-
-/* Button used to open the contact form - fixed at the bottom of the page */
-/*.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
+.announcement-logo{
+	display: inline-flex;
 }
-*/
+.btn-primary {
+	border:none;
+	color:#4d6d9a;
+}
+
 /* The popup form - hidden by default */
 .form-popup{
   display: none;
@@ -113,7 +117,7 @@ ol li{
 
 /* Set a style for the submit/login button */
 .form-container .btn, .new .btn  {
-  background-color: #4CAF50;
+  background-color: #edb5bf;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -125,7 +129,7 @@ ol li{
 
 /* Add a red background color to the cancel button */
 .form-container .cancel, .new .cancel {
-  background-color:  #F1D600;
+  background-color:  #4d6d9a;
 }
 
 /* Add some hover effects to buttons */
@@ -155,54 +159,39 @@ width: 300px;
 background-color: #e8efef;	
 margin: 20px auto;
 padding: 20px 40px;
+border-radius:5px;
 }
 
 img {
-	width: 100%;
+	width: 90%;
 	height: 90%;
+	border-radius:50%;
+	margin-left:10px;
 }
 .item-title {
 	text-align: center;
 	padding: 10px;
+	color:#4d6d9a;
+}
+.classList{
+	width: 70%;
+	margin: 50px auto;
+
 }
  .logout-item {
- 	background-color: #4CAF50;
+ 	background-color: #edb5bf;
  	width: 100%;
  	height: 100%;
  	margin:0;
  }
 
 
-/*
-#center {
-	padding-top: 15px;
-}
-#quote {
-font-family: 'Courgette', cursive;
-
-margin: 30px;
-border: 5px solid red;
-}
-#heading{
-	margin-top: 1rem;
-}*/
-/*.categ {
-	background-color: #e9ecef;
-	margin-top: 0;
-	margin-bottom: 20px;
-}
-*/
-/*.announcement{
-	box-sizing: border-box;
-	width: 100%;
-	
-	margin-right:18px;
-}*/
 
 .jumbotron.weatherbar{
+	background-color: #99ced3;
 	
 	font-family: 'Faster One', cursive;
-	color:#484848;
+	color:#5f6366;
 	height: 750px;
 
 	padding: 20px;
@@ -213,8 +202,6 @@ border: 5px solid red;
 }
 .announcement,.categ {
 	box-sizing: border-box;
-	background-color: #BED73B;
-	width: 100%;
 	margin: 20px 0px 20px 0px;
 	color:gray;
 	
@@ -222,21 +209,31 @@ border: 5px solid red;
 	font-family: 'Nunito', sans-serif;
 
 }
+.announcement-wrapper{
+	width: 100%;
+	justify-content: center;
+}
+.announcement {
+	width: 80%;
+	margin:10px auto;
+	background-color: #86b3d1;
+	border:1px solid #78909c;
+	border-radius:20px;
+	
+}
+.announcement h3 {
+	color:#5f6366;
+	margin-right: 20px;
+}
+
 .categ{
 	margin-bottom: 30px;
 	padding: 20px;
-	background-color: #E8EFEF;
-	
 
 }
 .categ h4 {
 	text-align: center;
-}
 
-
-.namelist .card{
-	height: 350px;
-	overflow: scroll;
 }
 
 
@@ -249,4 +246,24 @@ border: 5px solid red;
 
 .form-inline .form-control{
 	width: 100%;
+}
+.btn-button{
+	background-color: #edb5bf;
+}
+
+/*----logo animation----*/
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+.logo-img{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+;
+	height: 60px;
+	width: 60px;
 }

@@ -15,7 +15,7 @@ class DefaultLayout extends React.Component {
 
         </head>
         <body>
-
+         <div class = "main">
         	<nav class="navbar navbar-expand-sm navbar-light" id ="header">
               <a class="logo" href="/"> <div id = "logopic">Home</div></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +31,10 @@ class DefaultLayout extends React.Component {
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <li class="dropdown-header">Projects</li>
                       <li><a class="dropdown-item" href="/projectsdelete">Delete project</a></li>
-                      <li><a class="dropdown-item" href="/projectsedit">Edit project</a></li>
                       <li><a class="dropdown-item" href="/projectsnew">Add new project</a></li>
                       <li class="dropdown-divider"></li>
                       <li class="dropdown-header">Students</li>
                       <li><a class="dropdown-item" href="/studentsdelete">Remove students</a></li>
-                      <li><a class="dropdown-item" href="/studentsedit">Edit students</a></li>
                       <li><a class="dropdown-item" href="/studentsnew">Add new students</a></li>
                       <li class="dropdown-divider"></li>
                       <li class="dropdown-header">Announcement</li>
@@ -49,6 +47,7 @@ class DefaultLayout extends React.Component {
             </nav>
 
         	{this.props.children}
+          </div>
         </body>
       </html>
     );

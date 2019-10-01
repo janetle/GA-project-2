@@ -1,28 +1,24 @@
 var React = require("react");
 var DefaultLayout = require('./layouts/defaultUser')
 
-
-
 class ListItem extends React.Component {
   
     render() {
       console.log(this.props.item);
         return (
-          <li class = "item classlist">
-            <img src ={this.props.item.profile_pic} />
-            <p class = "item-title">{this.props.item.name}</p>
-       
+          <li class = "classlist">
+            <div class = "item">
+              <img src ={this.props.item.profile_pic} />
+              <p class = "item-title">{this.props.item.name}</p>
+            </div>
           </li>
         );
     }
 
 };
 
-
-
 class ClassList extends React.Component {
     render() {
-     { /* map over classlistItem */}
       let itemsElements = this.props.student.map( (item, index) => {
         return <ListItem item={item}></ListItem>;
       });
@@ -42,13 +38,10 @@ class ClassList extends React.Component {
                 <button type="submit" class="btn cancel">Cancel</button>
             </div>
         
-
-            <div >
-
-              <ol>
+            <div class = "classList" >
+              <ul>
                 {itemsElements}
-              </ol>
-              
+              </ul>
             </div> 
             <nav class="navbar navbar-light show justify-content-center " id ="footer">
               <p id = "center"> © Copyright Hackberry 2019 </p>

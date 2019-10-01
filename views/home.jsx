@@ -57,9 +57,7 @@ class HOME extends React.Component {
 
     return (
       <DefaultLayout>
-      
           <div class = "main">
-        
 
             <div class="form-popup form-container" id="myLoginForm">
                 <form  autocomplete="off" method='POST' action='/login'>
@@ -83,7 +81,7 @@ class HOME extends React.Component {
                     <h3 id = "heading"> What inspires you today, Hackberry?</h3>
                     <form class="form-inline my-2 my-sm-0 quote-form" method='POST' action='/quotes'>
                       <input name = "quote" class="form-control mb-4 mr-sm-2" type="text" placeholder="Your quote" aria-label="quote"/>
-                      <button class="btn btn-primar btn-lg mt-20 mb-3 btn-warning" type="submit">Submit</button>
+                      <button class="btn btn-primary btn-lg mt-20 mb-3 btn-button" type="submit">Submit</button>
                       <h5 class="display-5" id = "quotes"></h5>
                     </form>
                     <div > </div>
@@ -91,17 +89,20 @@ class HOME extends React.Component {
                     <h4 class="display-5 forecast">Weather forecast</h4>
                     <div id ="ty"></div>
                     
-                    <a class="btn btn-primary btn-lg mt-4 mb-4 btn-warning" href="https://www.nea.gov.sg/weather" role="button">Find out more</a>
+                    <a class="btn btn-primary btn-lg mt-4 mb-4 btn-button" href="https://www.nea.gov.sg/weather" role="button">Find out more</a>
                   </div>
                 </div>
 
                 <div class = "col-md-9">
-                  
+                  <div class = "announcement-wrapper">
                     <div class="announcement">
-                      <h3>Announcement</h3>
+                      <div class = "announcement-logo">
+                        <h3>Announcement</h3> 
+                        <img class = "logo-img" src = "/announcement.png" />
+                      </div>
                         <div id ="announcement">{announcementElements}</div>
                     </div>
-                
+                  </div>
 
                   <div class = "categ" >  
                     <h4> SIA Categories</h4>

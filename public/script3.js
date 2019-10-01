@@ -47,12 +47,7 @@ var closeForm = ()=> {
 	document.getElementById("myForm").style.display = "none";
 };
  
-// var showAlert = ()=>{
-//  let success = document.querySelector('#success');
-//  success.addEventListener('click',confirmSignup )
-// }
-// var confirmSignup =()=> {
-// 	alert(" Done");
+
 	
 console.log('testing')
 signUpForm();

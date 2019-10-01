@@ -22,34 +22,6 @@ var newQuotes = function() {
 };
 
 
-// var makeAnouncement = function() {
-// 	var anouncementResponse = function() {
-// 		let data = JSON.parse(this.responseText);
-// 		console.log('Hi there')
-// 		console.log(data.anouncement);
-// 			data.map(data => {
-// 				let anouncement =document.createElement('div');
-				
-// 				anouncement.innerText= data.anouncement;
-// 				document.getElementById('anouncement').appendChild(anouncement);
-// 			});
-// 	};	
-
-// 	var request = new XMLHttpRequest();
-
-// 	request.addEventListener("load", anouncementResponse);
-
-// 	request.open("GET", "/login/anouncement");
-
-// 	request.send();
-// };
-
-
-
-
-
-
-
 var getWeatherForecast = function () {
 
 	var weatherResponseHandler = function() {

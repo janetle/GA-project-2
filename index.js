@@ -62,44 +62,6 @@ const setRoutesFunction = require('./routes');
 // call it and pass in the "app" so that we can set routes on it (also models)
 setRoutesFunction(app, allModels);
 
-/**
- * ===================================
- * Listen to requests on port 3000
- * ===================================
- */
-
-
-
-// 
-
-
-
-
-// app.get('/classList/:id', (req, res)=> {
-// 	console.log("searching");
-// 	const query = " SELECT name, description, due_date FROM student_project JOIN projects On project_id = id WHERE student_id =" + req.params;
-// 	pool.query(query, (err, result)=>{
-// 		if(err){
-// 			console.log("err",err);
-// 		} else {
-// 			console.log('Yeah!')
-// 			let data = {
-// 				item :result.rows
-// 			}
-// 			res.render('student',data)
-// 		}
-// 	})
-// })
-
-
-
-
-
-
-
-
-
-
 
 
 /**

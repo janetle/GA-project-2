@@ -15,20 +15,22 @@ class DefaultLayout extends React.Component {
 
         </head>
         <body>
-          <nav class="navbar navbar-expand-sm navbar-light" id ="header">
-            <a class="logo" href="/"> <div id = "logopic">Home</div></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+          <div class = "main">
+            <nav class="navbar navbar-expand-sm navbar-light" id ="header">
+              <a class="logo" href="/"> <div id = "logopic">Home</div></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
 
-            <div class="collapse navbar-collapse show justify-content-end" id="navbarSupportedContent">
-              <a class="nav-link" href="/classlist">Class members</a>
-              <a class="nav-link" href="/projects"> SIA Projects</a>
-              <button type="submit" class= "login">Admin</button>
-
-            </div>
-          </nav>
+              <div class="collapse navbar-collapse show justify-content-end" id="navbarSupportedContent">
+                <a class="nav-link" href="/classlist">Class members</a>
+                <a class="nav-link" href="/projects"> SIA Projects</a>
+                <button type="submit" class= "login">Admin</button>
+              </div>
+            </nav>
+          
         	{this.props.children}
+         </div>
         </body>
       </html>
     );

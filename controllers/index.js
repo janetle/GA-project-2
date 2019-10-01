@@ -2,13 +2,7 @@
 
 const SALT = "CARROT IS BOTH FRUIT AND VEGGIE";
 var sha256 = require('js-sha256');
-// var checkLoginStatus(req, res) => {
-//   if(sha256(req.cookies["user_id"] + 'logged_in' + SALT) === req.cookies["logged_in"]){ 
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
+
 
 module.exports = (db) => {
 

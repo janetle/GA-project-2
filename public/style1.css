@@ -1,21 +1,32 @@
 {box-sizing: border-box;}
-
+body {
+  background-color: #99ced3;
+}
 a.logo{
 	padding:3px 16px;
-	color: gray;
+	color:#f5f5f5;
 	border-radius: 50%;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
 }
 a.nav-link{
 	font-family: 'Open Sans', sans-serif;
-	color:gray;
+	color:#f5f5f5;
 }
 .item {
 width: 80%;
 background-color: #e8efef;	
 margin: 20px auto;
 padding: 20px 40px;
+}
+p{
+  color:#808080;
+}
+#center{
+  color: #4d6d9a;
+}
+.item-title{
+  color:#4d6d9a;
 }
 .list{
 	list-style: none;
@@ -25,6 +36,7 @@ padding: 20px 40px;
 	padding: 20px 40px;
 	text-align: center;
 	font-size: 30px;
+  color: #4d6d9a;
 
 }
 
@@ -65,7 +77,7 @@ padding: 20px 40px;
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: #edb5bf;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -75,8 +87,8 @@ padding: 20px 40px;
   opacity: 0.8;
 }
 .open-button {
-  background-color: #F1D600;
-  color: white;
+  background-color: #edb5bf;
+  color: #4d6d9a;
   padding: 16px 20px;
   border: 2px solid transparent;
   border-radius: 5px;
@@ -90,7 +102,7 @@ padding: 20px 40px;
 	margin: 0 auto;
 }
 .btn.cancel, .btn.cancel-login{
-  background-color: red;
+  background-color: #4d6d9a;
 }
 
 /* Add some hover effects to buttons */

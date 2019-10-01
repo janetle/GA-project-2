@@ -33,11 +33,6 @@ pool.on('error', function (err) {
   console.log('idle client error', err.message, err.stack);
 });
 
- 
-// const SALT = 'CARROT IS BOTH FRUIT AND VEGGIE';
-// const sha256 = require('js-sha256');
-
-
 const allStudentsModelsFunction = require('./models/students');
 
 const studentsModelsObject = allStudentsModelsFunction( pool );
