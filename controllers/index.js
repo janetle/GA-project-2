@@ -14,7 +14,6 @@ module.exports = (db) => {
   const showHomepage = (req, res) => {
     if(req.cookies["loggedin"] === "906367c8bce992f7d1b596ca6fb772b68a224fbde8c55ada4f418cd8e9683382"){
      res.redirect('/login');
-      
     } else {
 
         db.students.getHomepage((err, queryResult) => {
@@ -111,9 +110,7 @@ module.exports = (db) => {
     let data = req.body;
     db.students.login(data,(isLoggedIn) => {
       if (isLoggedIn===true) {
-        
         let hasshedUsername = sha256('GEORGE' + SALT);
-        // let loggedin;
         res.cookie("loggedin", hasshedUsername);
         res.render('teacherHome');
           

@@ -43,8 +43,6 @@ var closeForm = ()=> {
 	document.getElementById("myForm").style.display = "none";
 };
  
-
-	
 console.log('testing')
 signUpForm();
 cancelForm();

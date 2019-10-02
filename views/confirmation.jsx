@@ -10,7 +10,7 @@ class Confirmation extends React.Component {
         <body>
           
           <h1> Successful </h1>
-          <script src='/script2.js'></script>
+          <script src='/script4.js'></script>
 
         </body>
         </html>

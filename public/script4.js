@@ -1,3 +1,3 @@
 let backToProjectPage = setTimeout(()=>{
-	window.location.href = "https://hackberry.herokuapp.com/"
+	window.location.href = "/"
 }, 300);
