@@ -2,17 +2,13 @@
 
 var signUpForm = ()=>{
 	let signUp = document.querySelectorAll('.signUp');
-	console.log(signUp.length);
-	console.log('hi')
 	signUp.forEach((item)=>{
 		item.addEventListener("click", openForm)
 	})
 }
 
 var login = ()=>{
-
 	let admin = document.querySelector('.login');
-	console.log(admin);
 	admin.addEventListener('click',()=>{
 		document.getElementById('myLoginForm').style.display = "block";
 	});
